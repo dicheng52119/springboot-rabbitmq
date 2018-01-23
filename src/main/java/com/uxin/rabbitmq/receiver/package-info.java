@@ -1,0 +1,1 @@
+package com.uxin.rabbitmq.receiver;
