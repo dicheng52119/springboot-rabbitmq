@@ -32,6 +32,7 @@
     > 1. 必须Exchange持久化了，才能实现Queue持久化，必须Queue持久化了，才能实现Message持久化
     > 2. Exchange和Queue在定义时进行持久化设置，而调用发送消息的convertAndSend方法时默认发的持久化的信息
 2. 消息发送方(确认消息发送到Rabbitmq服务器上)
+    
     方式一：通过AMQP事务机制实现，这也是从AMQP协议层面提供的解决方案；
     
     方式二：通过将channel设置成confirm模式来实现
