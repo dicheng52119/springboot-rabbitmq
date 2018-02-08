@@ -2,7 +2,7 @@ package com.uxin.rabbitmq.config;
 
 /**
  * @program: springboot-rabbitmq
- * @description:定义rabbitMq需要的常量
+ * @description: 定义rabbitMq需要的常量(实现方式二)
  * @author: DI CHENG
  * @create: 2018-01-23 16:05
  **/

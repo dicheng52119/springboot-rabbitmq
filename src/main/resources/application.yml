@@ -7,4 +7,12 @@ spring:
     username: guest
     password: guest
     publisher-confirms: true
+    publisher-returns: true
+    template:
+      mandatory: true
     virtual-host: /
+    cache:
+      connection:
+        mode: channel
+      channel:
+        size: 100 #提高connection稳定性，防止丢失数据

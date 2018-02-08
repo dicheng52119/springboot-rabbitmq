@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @program: springboot-rabbitmq
- * @description:
+ * @description: 消费信息类型为对象(实现方式一)
  * @author: DI CHENG
  * @create: 2018-01-23 14:50
  **/

@@ -12,7 +12,7 @@ import java.util.UUID;
 
 /**
  * @program: springboot-rabbitmq
- * @description: rabbitmq发送消息工具类
+ * @description: rabbitmq发送消息工具类(实现方式二)
  * @author: DI CHENG
  * @create: 2018-01-23 16:11
  **/

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @program: springboot-rabbitmq
- * @description:
+ * @description: 发送消息类型为对象(实现方式一)
  * @author: DI CHENG
  * @create: 2018-01-23 14:48
  **/

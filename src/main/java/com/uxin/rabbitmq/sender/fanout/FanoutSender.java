@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @program: springboot-rabbitmq
- * @description:
+ * @description: (实现方式一)
  * Fanout 就是我们熟悉的广播模式或者订阅模式，给Fanout转发器发送消息，绑定了这个转发器的所有队列都收到这个消息。
  * 这里使用三个队列来测试（也就是在Application类中创建和绑定的fanout.A、fanout.B、fanout.C）这三个队列都和Application中创建的fanoutExchange转发器绑定。
  *

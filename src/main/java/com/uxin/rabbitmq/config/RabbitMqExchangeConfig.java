@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * @program: springboot-rabbitmq
- * @description: rabbitmq生产者配置
+ * @description: rabbitmq生产者配置(实现方式二)
  * 用于配置交换机和队列对应关系
  * 新增消息队列应该按照如下步骤
  * 1、增加queue bean，参见queueXXXX方法
@@ -55,7 +55,6 @@ public class RabbitMqExchangeConfig {
     }
 
     //在此可以定义队列
-
     @Bean
     Queue queueTest(RabbitAdmin rabbitAdmin){
         Queue queue = new Queue(RabbitMqEnum.QueueName.TESTQUEUE.getCode());

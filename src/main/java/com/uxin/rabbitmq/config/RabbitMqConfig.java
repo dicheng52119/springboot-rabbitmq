@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Scope;
 
 /**
  * @program: springboot-rabbitmq
- * @description: RabbitMq配置文件读取类
+ * @description: RabbitMq代码配置方式(实现方式二)
  * @author: DI CHENG
  * @create: 2018-01-23 15:27
  **/
@@ -36,6 +36,12 @@ public class RabbitMqConfig {
     @Value("${spring.rabbitmq.publisher-confirms}")
     private boolean publisherConfirms;
 
+    @Value("${spring.rabbitmq.publisher-returns}")
+    private boolean publisherReturns;
+
+    @Value("${spring.rabbitmq.cache.channel.size}")
+    private Integer channelCacheSize;
+
     // 构建mq实例工厂
     @Bean
     public ConnectionFactory connectionFactory() {
@@ -47,6 +53,8 @@ public class RabbitMqConfig {
         connectionFactory.setVirtualHost(virtualHost);
         /** 如果要进行消息回调，则这里必须要设置为true */
         connectionFactory.setPublisherConfirms(publisherConfirms);
+        connectionFactory.setPublisherReturns(publisherReturns);
+        connectionFactory.setChannelCacheSize(channelCacheSize);
         return connectionFactory;
     }
 

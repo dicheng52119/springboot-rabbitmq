@@ -9,14 +9,13 @@ import com.uxin.rabbitmq.sender.topic.TopicSender;
 import com.uxin.rabbitmq.sender.user.UserSender;
 import com.uxin.rabbitmq.sender.util.RabbitMqSender;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @program: springboot-rabbitmq
- * @description:
+ * @description: rabbitmq生产者消费者测试类
  * @author: DI CHENG
  * @create: 2018-01-23 14:32
  **/
@@ -46,7 +45,7 @@ public class RabbitTestController {
     private RabbitMqSender rabbitMqSender;
 
     /**
-     * 单生产者-单消费者
+     * 单生产者-单消费者(实现方式一)
      */
     @PostMapping("/oneToOne")
     public void oneToOne() {
@@ -54,7 +53,7 @@ public class RabbitTestController {
     }
 
     /**
-     * 单生产者-多消费者
+     * 单生产者-多消费者(实现方式一)
      */
     @PostMapping("/oneToMany")
     public void oneToMany() {
@@ -64,7 +63,7 @@ public class RabbitTestController {
     }
 
     /**
-     * 多生产者-多消费者
+     * 多生产者-多消费者(实现方式一)
      */
     @PostMapping("/manyToMany")
     public void manyToMany() {
@@ -75,7 +74,7 @@ public class RabbitTestController {
     }
 
     /**
-     * 实体类传输测试
+     * 实体类传输测试(实现方式一)
      */
     @PostMapping("/userTest")
     public void userTest() {
@@ -83,7 +82,7 @@ public class RabbitTestController {
     }
 
     /**
-     * topic exchange类型rabbitmq测试
+     * topic exchange类型rabbitmq测试(实现方式一)
      */
     @PostMapping("/topicTest")
     public void topicTest() {
@@ -91,19 +90,24 @@ public class RabbitTestController {
     }
 
     /**
-     * fanout exchange类型rabbitmq测试
+     * fanout exchange类型rabbitmq测试(实现方式一)
      */
     @PostMapping("/fanoutTest")
     public void fanoutTest() {
         fanoutSender.send();
     }
 
+    /**
+     * 具有回调信息的生产者配置测试(实现方式一)
+     */
     @PostMapping("/callback")
     public void callbak() {
-        callBackSender.send();
+        callBackSender.sendMessage("测试具有回调信息的生产者配置");
     }
 
-
+    /**
+     * direct和topic测试(实现方式二)
+     */
     @PostMapping("/directAndTopicTest")
     public void directAndTopicTest() {
         User testUser = new User();

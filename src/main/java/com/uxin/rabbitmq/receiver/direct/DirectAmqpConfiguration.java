@@ -16,7 +16,7 @@ import org.springframework.util.SerializationUtils;
 
 /**
  * @program: springboot-rabbitmq
- * @description:Direct消费者配置
+ * @description: Direct消息确认配置(实现方式二)
  * springboot注解方式监听队列，无法手动指定回调，所以采用了实现ChannelAwareMessageListener接口，
  * 重写onMessage来进行手动回调，详见以下代码,详细介绍可以在spring的官网上找amqp相关章节阅读
  * @author: DI CHENG
@@ -24,7 +24,7 @@ import org.springframework.util.SerializationUtils;
  **/
 @Configuration
 @AutoConfigureAfter(RabbitMqConfig.class)
-public class ExampleAmqpConfiguration {
+public class DirectAmqpConfiguration {
 
     @Bean("testQueueContainer")
     public MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory) {
@@ -45,13 +45,13 @@ public class ExampleAmqpConfiguration {
                 //通过设置TestUser的name来测试回调，分别发两条消息，一条UserName为1，一条为2，查看控制台中队列中消息是否被消费
                 if ("2".equals(testUser.getName())){
                     System.out.println(testUser.toString());
-                    //第一个参数为接收到的tag，第二个参数用于响应是否接收成功
+                    //第一个参数为接收到的tag，第二个参数用于判断消息和tag是否接收成功，false说明tag未接成功
                     channel.basicAck(message.getMessageProperties().getDeliveryTag(),false);
                 }
 
                 if ("1".equals(testUser.getName())){
                     System.out.println(testUser.toString());
-                    //第一个参数为接收到的tag，第二个参数用于响应是否接收成功，第三个参数用于是否要求重发
+                    //第一个参数为接收到的tag，第二个参数用于判断消息和tag是否拒收，false则仅拒收tag，第三个参数用于是否要求重发
                     channel.basicNack(message.getMessageProperties().getDeliveryTag(),false,true);
                 }
 

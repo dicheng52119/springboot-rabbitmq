@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @program: springboot-rabbitmq
- * @description:
+ * @description: Fanout消费方(实现方式一)
  * @author: DI CHENG
  * @create: 2018-01-23 15:15
  **/
