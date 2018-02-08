@@ -57,7 +57,7 @@ public class RabbitMqExchangeConfig {
     //在此可以定义队列
     @Bean
     Queue queueTest(RabbitAdmin rabbitAdmin){
-        Queue queue = new Queue(RabbitMqEnum.QueueName.TESTQUEUE.getCode());
+        Queue queue = new Queue(RabbitMqEnum.QueueName.TESTQUEUE.getCode(),true,false,false);
         rabbitAdmin.declareQueue(queue);
         logger.debug("测试队列实例化完成");
         return queue;
@@ -66,7 +66,7 @@ public class RabbitMqExchangeConfig {
     //topic 1
     @Bean
     Queue queueTopicTest1(RabbitAdmin rabbitAdmin){
-        Queue queue = new Queue(RabbitMqEnum.QueueName.TOPICTEST1.getCode());
+        Queue queue = new Queue(RabbitMqEnum.QueueName.TOPICTEST1.getCode(),true,false,false);
         rabbitAdmin.declareQueue(queue);
         logger.debug("话题测试队列1实例化完成");
         return queue;
@@ -74,7 +74,7 @@ public class RabbitMqExchangeConfig {
     //topic 2
     @Bean
     Queue queueTopicTest2(RabbitAdmin rabbitAdmin){
-        Queue queue = new Queue(RabbitMqEnum.QueueName.TOPICTEST2.getCode());
+        Queue queue = new Queue(RabbitMqEnum.QueueName.TOPICTEST2.getCode(),true,false,false);
         rabbitAdmin.declareQueue(queue);
         logger.debug("话题测试队列2实例化完成");
         return queue;
