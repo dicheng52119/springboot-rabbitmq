@@ -2,6 +2,7 @@ package com.uxin.rabbitmq.receiver.topic;
 
 import com.rabbitmq.client.Channel;
 import com.uxin.rabbitmq.config.RabbitMqConfig;
+import com.uxin.rabbitmq.config.RabbitMqEnum;
 import com.uxin.rabbitmq.model.User;
 import org.springframework.amqp.core.AcknowledgeMode;
 import org.springframework.amqp.core.Message;
@@ -16,7 +17,7 @@ import org.springframework.util.SerializationUtils;
 
 /**
  * @program: springboot-rabbitmq
- * @description:topic消息确认配置 (实现方式二)
+ * @description:topic消息确认消费回调配置 (实现方式二)
  * springboot注解方式监听队列，无法手动指定回调，所以采用了实现ChannelAwareMessageListener接口，
  * 重写onMessage来进行手动回调，详见以下代码,详细介绍可以在spring的官网上找amqp相关章节阅读
  * @author: DI CHENG
@@ -30,7 +31,7 @@ public class TopicAmqpConfiguration {
     public MessageListenerContainer messageListenerContainer(ConnectionFactory connectionFactory) {
         SimpleMessageListenerContainer container = new SimpleMessageListenerContainer();
         container.setConnectionFactory(connectionFactory);
-        container.setQueueNames("TOPICTEST1");
+        container.setQueueNames(RabbitMqEnum.QueueName.TOPICTEST1.getCode());
         container.setMessageListener(exampleListener1());
         container.setAcknowledgeMode(AcknowledgeMode.MANUAL);
         return container;

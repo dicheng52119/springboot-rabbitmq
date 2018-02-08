@@ -7,11 +7,9 @@ import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.UUID;
-
 /**
  * @program: springboot-rabbitmq
- * @description: 演示了具有回调信息的生产者配置
+ * @description: 演示了具有发送确认回调信息的生产者配置(实现方式一)
  * @author: DI CHENG
  * @create: 2018-01-23 15:28
  **/

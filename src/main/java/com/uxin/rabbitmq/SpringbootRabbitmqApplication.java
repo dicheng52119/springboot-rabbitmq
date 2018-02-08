@@ -14,23 +14,23 @@ public class SpringbootRabbitmqApplication {
 
 	@Bean
 	public Queue helloQueue() {
-		return new Queue("hello");
+		return new Queue("hello",true,false,false);
 	}
 
 	@Bean
 	public Queue userQueue() {
-		return new Queue("user");
+		return new Queue("user",true,false,false);
 	}
 
 	//===============以下是验证topic Exchange的队列==========
 	@Bean
 	public Queue queueMessage() {
-		return new Queue("topic.message");
+		return new Queue("topic.message",true,false,false);
 	}
 
 	@Bean
 	public Queue queueMessages() {
-		return new Queue("topic.messages");
+		return new Queue("topic.messages",true,false,false);
 	}
 	//===============以上是验证topic Exchange的队列==========
 
@@ -38,28 +38,28 @@ public class SpringbootRabbitmqApplication {
 	//===============以下是验证Fanout Exchange的队列==========
 	@Bean
 	public Queue AMessage() {
-		return new Queue("fanout.A");
+		return new Queue("fanout.A",true,false,false);
 	}
 
 	@Bean
 	public Queue BMessage() {
-		return new Queue("fanout.B");
+		return new Queue("fanout.B",true,false,false);
 	}
 
 	@Bean
 	public Queue CMessage() {
-		return new Queue("fanout.C");
+		return new Queue("fanout.C",true,false,false);
 	}
 	//===============以上是验证Fanout Exchange的队列==========
 
 
 	@Bean
 	TopicExchange exchange() {
-		return new TopicExchange("exchange");
+		return new TopicExchange("exchange",true,false);
 	}
 	@Bean
 	FanoutExchange fanoutExchange() {
-		return new FanoutExchange("fanoutExchange");
+		return new FanoutExchange("fanoutExchange",true,false);
 	}
 
 	/**
